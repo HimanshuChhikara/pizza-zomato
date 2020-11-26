@@ -40,3 +40,11 @@ section.hero {
   color: #fff;
 }
 
+.btn-primary {
+  background: #FE5F1E;
+}
+
+.btn-primary:hover {
+  background: #b23301;
+}
+
