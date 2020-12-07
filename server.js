@@ -5,6 +5,21 @@ const path = require('path');
 const expressLayout = require('express-ejs-layouts');
 
 const PORT = process.env.PORT || 3000
+const mongoose = require('mongoose');
+
+const url = "mongodb://localhost:27017/pizza";
+mongoose.connect(url,{
+    useNewUrlParser:true,
+    useCreateIndex:true,
+    useUnifiedTopology:true,
+    useFindAndModify:true
+});
+const connection = mongoose.connection;
+connection.once('open',function(){
+    console.log('Database connected');
+}).catch(err=>{
+    console.log('Connection Failed')
+});
 
 app.use(express.static('public'))
 
