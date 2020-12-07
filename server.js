@@ -14,9 +14,7 @@ app.use(expressLayout)
 app.set('views',path.join(__dirname,'/resources/views'));
 app.set('view engine', 'ejs')
 
-app.get('/', function(req,res){ 
-    res.render('home');
-})
+require('./routes/web')(app)
 
 app.get('/cart',function(req,res){
     res.render('/views/customers/cart')

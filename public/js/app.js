@@ -115,8 +115,8 @@ console.log("Hello From app.js");
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/oimediadev/Desktop/realtime-pizza/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/oimediadev/Desktop/realtime-pizza/resources/scss/app.scss */"./resources/scss/app.scss");
+__webpack_require__(/*! /home/oimediadev/Desktop/Projects/realtime-pizza/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/oimediadev/Desktop/Projects/realtime-pizza/resources/scss/app.scss */"./resources/scss/app.scss");
 
 
 /***/ })
