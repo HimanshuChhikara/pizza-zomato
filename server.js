@@ -4,10 +4,11 @@ const app = express()
 const ejs = require('ejs');
 const path = require('path');
 const expressLayout = require('express-ejs-layouts');
-// const session = require('express-session');
-// const flash = require('express-flash');
+const session = require('express-session');
+const flash = require('express-flash');
 const PORT = process.env.PORT || 3000
 const mongoose = require('mongoose');
+const passport = require('passport')
 // const MongoDbStore = require('connect-mongo')(session);
 
 
@@ -31,21 +32,25 @@ connection.once('open',function(){
 //         collection: 'sessions'
 // })
 
-// app.use(session({
-//     secret : process.env.COOKIE_SECRET,
-//     resave : false,
-//     // store : mongoStore,
-//     saveUninitialized : false,
-//     cookie : { maxAge: 1000 * 60 * 60 * 24} // 24 hours
-// }))
+app.use(session({ cookie: { maxAge: 60000 }, 
+    secret: 'woot',
+    resave: false, 
+    saveUninitialized: false}));
 
 
-// app.use(flash())
+
+app.use(flash())
 //Assets
-
+app.use(express.urlencoded({ extended:false }))
 app.use(express.static('public'))
 
 // Set template engine
+
+//Passport Config
+const passportInit = require('./app/config/passport')
+passportInit(passport)
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.use(expressLayout)
 app.set('views',path.join(__dirname,'/resources/views'));
